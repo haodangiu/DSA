@@ -1,3 +1,5 @@
+package src.Week6;
+
 import java.util.Scanner;
 
 public class Insertion_2 {

@@ -1,12 +1,19 @@
 package src.Week4;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class linkList {
-    static Node head = null;
+    Node head;
+
+    public linkList() {
+        head = null;
+    }
+
     class Node {
         int data;
         Node next;
+
         public Node(int data, linkList.Node next) {
             this.data = data;
             this.next = next;
@@ -21,6 +28,7 @@ public class linkList {
     public String toString() {
         return toString(head);
     }
+
     private String toString(Node node) {
         if (node == null) return "";
         return node.data + " " + toString(node.next);
@@ -78,6 +86,7 @@ public class linkList {
     //dao nguoc list
 
     static Node reverse(Node head) {
+
         if (head == null || head.next == null)
             return head;
         Node rest = reverse(head.next);
@@ -86,22 +95,69 @@ public class linkList {
         return rest;
     }
 
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int t = input.nextInt();
-
-        while (t != 0) {
-            linkList list = new linkList();
-            int n = input.nextInt();
-            while (n != 0) {
-                int tmp = input.nextInt();
-                list.append(tmp);
-                n--;
-            }
-            head = reverse(head);
-            System.out.print(list);
-
-            t--;
+    // in nguoc list
+    static void printReverse(Node head) {
+        Stack<Integer> st = new Stack<>();
+        while (head != null) {
+            st.push(head.data);
+            head = head.next;
+        }
+        while (!st.empty()) {
+            System.out.println(st.peek());
+            st.pop();
         }
     }
+
+    //so sanh 2 list.
+    static boolean compareLists(Node head1, Node head2) {
+        Node p1 = head1;
+        Node p2 = head2;
+        while (p1 != null && p2 != null) {
+            if (p1.data != p2.data) {
+                return false;
+            }
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        if (p1 != null || p2 != null) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int q = sc.nextInt();
+
+        while (q != 0) {
+            linkList list1 = new linkList();
+            linkList list2 = new linkList();
+            int n = sc.nextInt();
+            while (n != 0) {
+
+                int i = sc.nextInt();
+                list1.append(i);
+
+                n--;
+            }
+            int m = sc.nextInt();
+            while (m != 0) {
+                int j = sc.nextInt();
+                list2.append(j);
+
+                m--;
+            }
+            if (compareLists(list1.head , list2.head))
+            {
+                System.out.println(1);
+            }
+            else System.out.println(0);
+
+
+            q--;
+        }
+
+    }
+
 }

@@ -10,16 +10,13 @@ public class Jesse_and_cookies {
         N = scanner.nextInt();
         K = scanner.nextInt();
 
-        Queue pqueue = new PriorityQueue(N);
+        PriorityQueue<Integer> pqueue = new PriorityQueue(N);
         for (int i = 0; i < N; i++) {
             pqueue.add(scanner.nextInt());
         }
-       
 
-
-        while (pqueue.size() != 0) {
-            System.out.println(pqueue.remove());
-        }
+        pqueue.remove();
+        System.out.println(pqueue.peek());
     }
 
 }
