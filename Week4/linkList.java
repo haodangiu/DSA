@@ -128,35 +128,45 @@ public class linkList {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int q = sc.nextInt();
-
-        while (q != 0) {
-            linkList list1 = new linkList();
-            linkList list2 = new linkList();
-            int n = sc.nextInt();
-            while (n != 0) {
-
-                int i = sc.nextInt();
-                list1.append(i);
-
-                n--;
-            }
-            int m = sc.nextInt();
-            while (m != 0) {
-                int j = sc.nextInt();
-                list2.append(j);
-
-                m--;
-            }
-            if (compareLists(list1.head , list2.head))
-            {
-                System.out.println(1);
-            }
-            else System.out.println(0);
-
-
-            q--;
+//        int q = sc.nextInt();
+//
+//        while (q != 0) {
+//            linkList list1 = new linkList();
+//            linkList list2 = new linkList();
+//            int n = sc.nextInt();
+//            while (n != 0) {
+//
+//                int i = sc.nextInt();
+//                list1.append(i);
+//
+//                n--;
+//            }
+//            int m = sc.nextInt();
+//            while (m != 0) {
+//                int j = sc.nextInt();
+//                list2.append(j);
+//
+//                m--;
+//            }
+//            if (compareLists(list1.head , list2.head))
+//            {
+//                System.out.println(1);
+//            }
+//            else System.out.println(0);
+//
+//
+//            q--;
+//        }
+        int n = sc.nextInt();
+        linkList list = new linkList();
+        while (n != 0)
+        {
+            int tmp = sc.nextInt();
+            list.append(tmp);
+            n--;
         }
+        list.head = reverse(list.head);
+        System.out.println(list.toString());
 
     }
 

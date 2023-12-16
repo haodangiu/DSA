@@ -11,7 +11,7 @@ class Cell {
     }
 }
 
-public class bai1 {
+public class ConnectCells {
 
     static int[][] grid;
     static boolean[][] visited;

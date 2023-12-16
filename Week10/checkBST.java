@@ -2,21 +2,31 @@ package src.Week10;
 
 public class checkBST {
 
-  public static int[] a = new int[10000];
-    public static int sz = 0;
-    public static void inOrder(Node root) {
-        if (root == null) return;
-        inOrder(root.left);
-        a[++sz]=root.data;
-        inOrder(root.right);
+    int findMin(Node root) {
+        if (root == null) {
+            return 10000;
+        }
+        return Math.min(root.data, Math.min(findMin(root.left), findMin(root.right)));
+    }
+
+    int findMax(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(root.data, Math.max(findMax(root.left), findMax(root.right)));
     }
 
     boolean checkBST(Node root) {
-        inOrder(root);
-        for (int i = 1 ; i <= sz -1 ; i++)
-        {
-            if (a[i] <= a[i-1]) return false;
+        if (root == null) {
+            return true;
         }
-        return true;
+        if (root.left != null && findMax(root.left) >= root.data) {
+            return false;
+        }
+        if (root.right != null && root.data >= findMin(root.right)) {
+            return false;
+        }
+        return (checkBST(root.left) && checkBST(root.right));
     }
+
 }

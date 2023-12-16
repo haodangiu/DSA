@@ -27,16 +27,16 @@ class Height_Tree {
     public static int height(Node root) {
         // Write your code here.
 
-        if ( root == null)
-        {
-            return 0;
+        if (root.left == null) {
+            if (root.right == null) {
+                return 0;
+            }
+            return height(root.right) + 1;
         }
-        else
-        {
-            int height_r = height(root.right);
-            int height_l = height(root.left);
-            return Math.max(height_r,height_l) +1 ;
+        if (root.right == null) {
+            return height(root.left) + 1;
         }
+        return Math.max(height(root.left), height(root.right)) + 1;
 
     }
 
